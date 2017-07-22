@@ -19,11 +19,9 @@ app.listen(constants.PORT, err => {
     throw err;
   } else {
     console.log(`
-      SERVER RUNNING!
-      -----------------
-      Port: ${constants.PORT}
-      Env: ${process.env.NODE_ENV}
-      -----------------
+        ╔═══════════════════════════╗
+        ║   SERVER RUNNING ON ${constants.PORT}  ║
+        ╚═══════════════════════════╝
       `);
   }
 });
