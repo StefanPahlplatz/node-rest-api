@@ -12,8 +12,11 @@
     "compression": "^1.7.0",
     "cross-env": "^5.0.1",
     "express": "^4.15.3",
+    "express-validation": "^1.0.2",
     "helmet": "^3.8.0",
-    "mongoose": "^4.11.3"
+    "joi": "^10.6.0",
+    "mongoose": "^4.11.3",
+    "validator": "^8.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
