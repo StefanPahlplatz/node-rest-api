@@ -1,13 +1,16 @@
 const devConfig = {
   MONGO_URL: 'mongodb://localhost/makeanodejsapi-dev',
+  JWT_SECRET: 'secretkey',
 };
 
 const testConfig = {
   MONGO_URL: 'mongodb://localhost/makeanodejsapi-test',
+  JWT_SECRET: 'secretkey',
 };
 
 const prodConfig = {
   MONGO_URL: 'mongodb://localhost/makeanodejsapi-prod',
+  JWT_SECRET: 'secretkey',
 };
 
 const defaultConfig = {
