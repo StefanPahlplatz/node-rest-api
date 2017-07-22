@@ -8,5 +8,6 @@ import postValidation from './post.validation';
 const routes = new Router();
 
 routes.post('/', authJwt, validate(postValidation.createPost), postController.createPost);
+routes.get('/:id', postController.getPostById);
 
 export default routes;
