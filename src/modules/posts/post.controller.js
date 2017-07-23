@@ -30,3 +30,24 @@ export async function getPostsList(req, res) {
     return res.status(HTTPStatus.BAD_REQUEST).json(e);
   }
 }
+
+export async function updatePost(req, res) {
+  try {
+    const post = await Post.findById(req.params.id);
+
+    // If the user is not the author.
+    if (!post.user.equals(req.user._id)) {
+      return res.sendStatus(HTTPStatus.UNAUTHORIZED);
+    }
+
+    // Patch the new values by looping over the supplied values.
+    Object.keys(req.body).forEach(key => {
+      post[key] = req.body[key];
+    });
+
+    // Return OK and save the object.
+    return res.status(HTTPStatus.OK).json(await post.save());
+  } catch (e) {
+    return res.status(HTTPStatus.BAD_REQUEST).json(e);
+  }
+}
