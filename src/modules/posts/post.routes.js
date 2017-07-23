@@ -8,7 +8,12 @@ import postValidation from './post.validation';
 const routes = new Router();
 
 // Create new post.
-routes.post('/', authJwt, validate(postValidation.createPost), postController.createPost);
+routes.post(
+  '/',
+  authJwt,
+  validate(postValidation.createPost),
+  postController.createPost
+);
 
 // Get a single post.
 routes.get('/:id', postController.getPostById);
@@ -17,7 +22,12 @@ routes.get('/:id', postController.getPostById);
 routes.get('/', postController.getPostsList);
 
 // Patch a post.
-routes.patch('/:id', authJwt, validate(postValidation.updatePost), postController.updatePost);
+routes.patch(
+  '/:id',
+  authJwt,
+  validate(postValidation.updatePost),
+  postController.updatePost
+);
 
 // Delete a post.
 routes.delete('/:id', authJwt, postController.deletePost);
