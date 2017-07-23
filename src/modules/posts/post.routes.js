@@ -19,4 +19,7 @@ routes.get('/', postController.getPostsList);
 // Patch a post.
 routes.patch('/:id', authJwt, validate(postValidation.updatePost), postController.updatePost);
 
+// Delete a post.
+routes.delete('/:id', authJwt, postController.deletePost);
+
 export default routes;
