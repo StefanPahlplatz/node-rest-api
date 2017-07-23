@@ -1,6 +1,7 @@
 import HTTPStatus from 'http-status';
 
 import Post from './post.model';
+import User from '../users/user.model';
 
 export async function createPost(req, res) {
   try {
@@ -67,6 +68,18 @@ export async function deletePost(req, res) {
     // Return OK and save the object.
     return res.sendStatus(HTTPStatus.NO_CONTENT);
   } catch (e) {
+    return res.status(HTTPStatus.BAD_REQUEST).json(e);
+  }
+}
+
+export async function favoritePost(req, res) {
+  try {
+    console.log('Body: ', req);
+    const user = await User.findById(req.user._id);
+    await user._favorites.posts(req.params.id);
+    return res.sendStatus(HTTPStatus.OK);
+  } catch (e) {
+    console.error('Error: ', e.message);
     return res.status(HTTPStatus.BAD_REQUEST).json(e);
   }
 }
