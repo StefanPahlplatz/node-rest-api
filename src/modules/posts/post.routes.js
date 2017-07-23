@@ -16,10 +16,10 @@ routes.post(
 );
 
 // Get a single post.
-routes.get('/:id', postController.getPostById);
+routes.get('/:id', authJwt, postController.getPostById);
 
 // Get all posts.
-routes.get('/', postController.getPostsList);
+routes.get('/', authJwt, postController.getPostsList);
 
 // Patch a post.
 routes.patch(

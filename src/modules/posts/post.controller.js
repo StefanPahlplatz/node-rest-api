@@ -14,8 +14,21 @@ export async function createPost(req, res) {
 
 export async function getPostById(req, res) {
   try {
-    const post = await Post.findById(req.params.id).populate('user');
-    return res.status(HTTPStatus.OK).json(post);
+    // Get the user and the post.
+    const promise = await Promise.all([
+      User.findById(req.user._id),
+      Post.findById(req.params.id).populate('user'),
+    ]);
+
+    // Check if the post is in favorites.
+    const favorite = promise[0]._favorites.isPostInFavorites(req.params.id);
+    const post = promise[1];
+
+    // Return the post with the favorite attribute.
+    return res.status(HTTPStatus.OK).json({
+      ...post.toJSON(),
+      favorite,
+    });
   } catch (e) {
     return res.status(HTTPStatus.BAD_REQUEST).json(e);
   }
@@ -26,7 +39,21 @@ export async function getPostsList(req, res) {
     const limit = parseInt(req.query.limit, 0);
     const skip = parseInt(req.query.skip, 0);
 
-    const posts = await Post.list({ limit, skip });
+    const promise = await Promise.all([
+      User.findById(req.user._id),
+      Post.list({ limit, skip }),
+    ]);
+
+    const posts = promise[1].reduce((prev, post) => {
+      const favorite = promise[0]._favorites.isPostInFavorites(post._id);
+      prev.push({
+        ...post.toJSON(),
+        favorite,
+      });
+
+      return prev;
+    }, []);
+
     return res.status(HTTPStatus.OK).json(posts);
   } catch (e) {
     return res.status(HTTPStatus.BAD_REQUEST).json(e);
@@ -74,12 +101,10 @@ export async function deletePost(req, res) {
 
 export async function favoritePost(req, res) {
   try {
-    console.log('Body: ', req);
     const user = await User.findById(req.user._id);
     await user._favorites.posts(req.params.id);
     return res.sendStatus(HTTPStatus.OK);
   } catch (e) {
-    console.error('Error: ', e.message);
     return res.status(HTTPStatus.BAD_REQUEST).json(e);
   }
 }

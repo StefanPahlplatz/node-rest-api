@@ -114,6 +114,10 @@ UserSchema.methods = {
 
       return this.save();
     },
+
+    isPostInFavorites(postId) {
+      return this.favorites.posts.indexOf(postId) >= 0;
+    },
   },
 };
 
