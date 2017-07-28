@@ -1,0 +1,275 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Node Rest Api",
+		"_postman_id": "8538f0c0-3cc5-29b6-2f33-512e3a725ba8",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users - Register",
+			"request": {
+				"url": "{{url}}/users/signup",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "password",
+							"value": "Password123",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "test@gmail.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "John",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Doe",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "JohnDoe",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Users - Login",
+			"request": {
+				"url": "{{url}}/users/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "test@gmail.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Password123",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Posts - Create",
+			"request": {
+				"url": "{{url}}/posts",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1OTdiNDJkNWU2NzhhNTBmZjg2MjdiMzUiLCJpYXQiOjE1MDEyNTAyNzh9.2zXf9vorBhmbR6q1ZlXCzQaj0qfZXxJAn7x1aUBs-Zk",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "title",
+							"value": "This is title 1",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "text",
+							"value": "this is the text for the new post.",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Posts - Get by id",
+			"request": {
+				"url": "{{url}}/posts/597b4301e678a50ff8627b36",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1OTdiNDJkNWU2NzhhNTBmZjg2MjdiMzUiLCJpYXQiOjE1MDEyNTAyNzh9.2zXf9vorBhmbR6q1ZlXCzQaj0qfZXxJAn7x1aUBs-Zk",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Posts - Get all",
+			"request": {
+				"url": {
+					"raw": "{{url}}/posts",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"posts"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "3",
+							"equals": true,
+							"description": "",
+							"disabled": true
+						},
+						{
+							"key": "skip",
+							"value": "3",
+							"equals": true,
+							"description": "",
+							"disabled": true
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1OTdiNDJkNWU2NzhhNTBmZjg2MjdiMzUiLCJpYXQiOjE1MDEyNTAyNzh9.2zXf9vorBhmbR6q1ZlXCzQaj0qfZXxJAn7x1aUBs-Zk",
+						"description": ""
+					},
+					{
+						"key": "",
+						"value": "",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Posts - Patch",
+			"request": {
+				"url": "{{url}}/posts/5973bf41226f900bfc2079ac",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1OTczYTM3ZGNkZjNkZjA5ZTgxMTIxMmQiLCJpYXQiOjE1MDA3OTgzOTV9.X5KHFsZ2fH67erJwxIfDvq3LmxLihLkUqphL9fxjhXY",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "title",
+							"value": "This is title 10",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Posts - Delete",
+			"request": {
+				"url": "{{url}}/posts/5973bf41226f900bfc2079ac",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1OTdiNDJkNWU2NzhhNTBmZjg2MjdiMzUiLCJpYXQiOjE1MDEyNTAyNzh9.2zXf9vorBhmbR6q1ZlXCzQaj0qfZXxJAn7x1aUBs-Zk",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Posts - Favorite",
+			"request": {
+				"url": "{{url}}/posts/5973b75dbf8de1426caed137/favorite",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1OTczYTM3ZGNkZjNkZjA5ZTgxMTIxMmQiLCJpYXQiOjE1MDA4MDUzODd9.PUnHh3iepOBDTeh43hbhGNyE9pyKXr4bdoQ5O3rXB7c",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "",
+							"value": "",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
