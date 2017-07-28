@@ -15,8 +15,8 @@ It's a very _very_ basic blog api with authentication.
 
 To quickly test some of the endpoints after running the server you can download and import the postman collection.
 
-[Postman]: https://i.gyazo.com/5a980ff4207bdb328f2087b8d671c85d.png "Postman collection"
+![alt text](https://github.com/StefanPahlplatz/node-rest-api/blob/master/postman.png "Postman Collection")
 
 ---
 
-Tutorial by [EQuimper](https://www.youtube.com/playlist?list=PLzQWIQOqeUSMzMUEJA0XrOxJbX8WTiCJV)
+Created by following a tutorial from [EQuimper](https://www.youtube.com/playlist?list=PLzQWIQOqeUSMzMUEJA0XrOxJbX8WTiCJV)
